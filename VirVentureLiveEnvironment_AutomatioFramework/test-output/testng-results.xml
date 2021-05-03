@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="25677" started-at="2021-05-03T14:58:56Z" finished-at="2021-05-03T14:59:22Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="25677" started-at="2021-05-03T14:58:56Z" finished-at="2021-05-03T14:59:22Z">
+      <class name="com.virventure.qa.testcases.InventoryPageTest">
+        <test-method status="PASS" signature="setupExtentReport()[pri:0, instance:com.virventure.qa.testcases.InventoryPageTest@327b636c]" name="setupExtentReport" is-config="true" duration-ms="240" started-at="2021-05-03T14:58:56Z" finished-at="2021-05-03T14:58:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupExtentReport -->
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.virventure.qa.testcases.InventoryPageTest@327b636c]" name="setup" is-config="true" duration-ms="10097" started-at="2021-05-03T14:58:56Z" finished-at="2021-05-03T14:59:06Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="validateInventoryManageVendorTitleTest()[pri:1, instance:com.virventure.qa.testcases.InventoryPageTest@327b636c]" name="validateInventoryManageVendorTitleTest" duration-ms="4451" started-at="2021-05-03T14:59:06Z" finished-at="2021-05-03T14:59:11Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateInventoryManageVendorTitleTest -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.virventure.qa.testcases.InventoryPageTest@327b636c]" name="tearDown" is-config="true" duration-ms="302" started-at="2021-05-03T14:59:11Z" finished-at="2021-05-03T14:59:11Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=validateInventoryManageVendorTitleTest status=SUCCESS method=InventoryPageTest.validateInventoryManageVendorTitleTest()[pri:1, instance:com.virventure.qa.testcases.InventoryPageTest@327b636c] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.virventure.qa.testcases.InventoryPageTest@327b636c]" name="setup" is-config="true" duration-ms="6380" started-at="2021-05-03T14:59:11Z" finished-at="2021-05-03T14:59:17Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="validateInventoryManageVendorLableTest()[pri:2, instance:com.virventure.qa.testcases.InventoryPageTest@327b636c]" name="validateInventoryManageVendorLableTest" duration-ms="4276" started-at="2021-05-03T14:59:17Z" finished-at="2021-05-03T14:59:22Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateInventoryManageVendorLableTest -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.virventure.qa.testcases.InventoryPageTest@327b636c]" name="tearDown" is-config="true" duration-ms="156" started-at="2021-05-03T14:59:22Z" finished-at="2021-05-03T14:59:22Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=validateInventoryManageVendorLableTest status=SUCCESS method=InventoryPageTest.validateInventoryManageVendorLableTest()[pri:2, instance:com.virventure.qa.testcases.InventoryPageTest@327b636c] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="tearExtentReport()[pri:0, instance:com.virventure.qa.testcases.InventoryPageTest@327b636c]" name="tearExtentReport" is-config="true" duration-ms="315" started-at="2021-05-03T14:59:22Z" finished-at="2021-05-03T14:59:22Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearExtentReport -->
+      </class> <!-- com.virventure.qa.testcases.InventoryPageTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
