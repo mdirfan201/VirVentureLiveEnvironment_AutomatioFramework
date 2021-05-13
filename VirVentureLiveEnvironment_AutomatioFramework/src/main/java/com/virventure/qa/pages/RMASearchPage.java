@@ -1,25 +1,26 @@
 package com.virventure.qa.pages;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 /***
  * Author Name: Mohammed Irfan
  */
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.sun.mail.imap.Utility.Condition;
 import com.virventure.qa.base.TestBase;
 import com.virventure.qa.util.JavaScriptUtil;
-import com.virventure.qa.util.TestUtil;
 
 public class RMASearchPage extends TestBase{
 
@@ -97,7 +98,6 @@ public class RMASearchPage extends TestBase{
 		Thread.sleep(2000);
 		txtOrderId.sendKeys(OrderId);
 		txtSKU.sendKeys(sku);
-		Thread.sleep(2000);
 		Select sel1= new Select(driver.findElement(By.xpath("//select[@id='filter_rma_type']")));
 		sel1.selectByVisibleText("Damaged - Delivered");
 		Thread.sleep(2000);
@@ -105,25 +105,34 @@ public class RMASearchPage extends TestBase{
 		sel2.selectByVisibleText("Refund");
 		Select sel3= new Select(driver.findElement(By.xpath("//select[@id='pending_from']")));
 		sel3.selectByIndex(1);
-		Thread.sleep(3000);
+		Thread.sleep(1000);
 
 		txtPONumber.sendKeys(PoNo);
 		txtTrakinNumber.sendKeys(TrackingNo);
-		Thread.sleep(4000);
+		Thread.sleep(1000);
 		FilterBtn.click();
 		Thread.sleep(4000);
-		JavaScriptUtil.WindowScrollBy(driver);
-		
+	
 		//ClearBtn.click();
 	}
+	
+//	public void RMASearchFilterPageEmpty() {
+//		clickRMA.click();
+//		clickRMASearch.click();
+//		FilterBtn.click();
+//		
+//	}
 
 	public void EditRMASearch() throws InterruptedException {
 		boolean isSelected=false;
 		clickRMA.click();
 		clickRMASearch.click();
 
-		Thread.sleep(50000);
+		//Thread.sleep(50000);
+		WebDriverWait wait=new WebDriverWait(driver, 20);
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//a[@class='btn' and @title='View']")));
 		JavaScriptUtil.WindowScrollBy(driver);
+		
 		String parentWindowID=driver.getWindowHandle(); //return ID of single browser
 		System.out.println("Parent Window ID is====>" + parentWindowID);
 
@@ -137,6 +146,7 @@ public class RMASearchPage extends TestBase{
 			if(!isSelected) {
 				EditLsit.get(i).click();
 				Thread.sleep(2000);
+				
 				Set<String>windowsIDs =driver.getWindowHandles();
 				System.out.println("Total number of Id of Multiple Windiows====>" + windowsIDs.size());
 				List<String>windowIDsList= new ArrayList(windowsIDs);
@@ -146,9 +156,12 @@ public class RMASearchPage extends TestBase{
 				System.out.println("Listchild window ID is====> "+ ListchildID);
 
 				driver.switchTo().window(ListchildID);
-				System.out.println("Child window title is ===>" + driver.getTitle());
-				driver.manage().window().maximize();
+				//driver.manage().window().maximize();
+				WebElement ele= driver.findElement(By.xpath("//h2[text()='RMA - Buyer's Cancellation']"));
+				JavaScriptUtil.drawBorder(ele, driver);
 				Thread.sleep(5000);
+				driver.close();
+				driver.switchTo().window(ListparentID);
 
 			}
 		}

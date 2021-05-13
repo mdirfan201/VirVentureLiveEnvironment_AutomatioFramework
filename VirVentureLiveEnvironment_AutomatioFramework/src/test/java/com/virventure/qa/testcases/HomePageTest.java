@@ -105,7 +105,7 @@ public class HomePageTest extends TestBase {
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromBase64String(screenshotPath).build());
 		}
 		
-		//driver.quit();
+		driver.quit();
 	}
 	
 	public static String getBase64ScreenShots() {

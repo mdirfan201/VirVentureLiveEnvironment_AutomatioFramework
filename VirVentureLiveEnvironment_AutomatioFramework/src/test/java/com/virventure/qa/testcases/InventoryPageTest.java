@@ -1,5 +1,10 @@
 package com.virventure.qa.testcases;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
@@ -65,7 +70,7 @@ public class InventoryPageTest extends TestBase{
 	
 	@Test(priority=1)
 	public void validateInventoryManageVendorTitleTest() throws InterruptedException {
-		test=extent.createTest("TC_01 :VV validate Inventory Manage-Vendor TitleTest ");
+		test=extent.createTest("TC_01 :VV validate Inventory Manage-Vendor TitleTest");
 		String expectedTitle="Manage Suppliers";
 		String actualTitle=inventorypage.validateTitle();
 		Assert.assertEquals(actualTitle, expectedTitle, "Title not matched");
@@ -74,12 +79,51 @@ public class InventoryPageTest extends TestBase{
 	
 	@Test(priority=2)
 	public void validateInventoryManageVendorLableTest() throws InterruptedException {
-		test=extent.createTest("TC_02 :VV validate Inventory Manage-Vendor Lable Test ");
+		test=extent.createTest("TC_02 :VV validate Inventory Manage-Vendor Lable Test");
 		boolean flag=inventorypage.validateLable();
 		Assert.assertTrue(flag);
+		driver.switchTo().defaultContent();
 	}
 	
 	
+	@Test(priority=3)
+	public void InventoryListPageTest() throws InterruptedException{
+		test=extent.createTest("TC_03 :VV Inventory List Page Test");
+		inventorypage.InventoryList();
+		test.info("Test case passed");
+	}
+	@Test(priority=4)
+	public void ManageVendorFilterSearchPageTestEmpty() throws InterruptedException {
+		test=extent.createTest("TC_04 :VV ManageVendor Filter Search Page Empty Test");
+		inventorypage.clickInventoryBtn();
+		inventorypage.clickManageVendorBtn();
+		Thread.sleep(3000);
+		
+		String parentWindowID=driver.getWindowHandle();
+		System.out.println("Parent Window ID is====>" + parentWindowID);
+		
+		Set<String>windowsIDs =driver.getWindowHandles();
+		System.out.println("Total number of Id of Multiple Windiows====>" + windowsIDs.size());
+		List<String>windowIDsList= new ArrayList(windowsIDs);
+		String ListparentID=windowIDsList.get(0);
+		String ListchildID=windowIDsList.get(1);
+		System.out.println("ListParent window ID is====> "+ ListparentID);
+		System.out.println("Listchild window ID is====> "+ ListchildID);
+
+		driver.switchTo().window(ListchildID);
+		System.out.println("Child window title is ===>" + driver.getTitle());
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//input[@name='filter']")).click();
+		System.out.println("The alter msg is==> "+ driver.switchTo().alert().getText());
+		driver.switchTo().alert().accept();
+		test.info("Test case passed");
+	}
+	@Test(priority=5)
+	public void ManageVendorFilterSearchPageTest() throws InterruptedException {
+		test=extent.createTest("TC_04 :VV ManageVendor Filter Search Page with data Test");
+		inventorypage.ManageVendorFilter("BIBO", "7021 Wolftown-Hood Road");
+		test.info("Test case passed");
+	}
 	
 	@AfterMethod
 	public void tearDown(ITestResult result) {
@@ -95,6 +139,7 @@ public class InventoryPageTest extends TestBase{
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromBase64String(getBase64ScreenShots()).build());
 		}
 		driver.close();
+		driver.quit();
 	}
 	
 	public static String getBase64ScreenShots() {

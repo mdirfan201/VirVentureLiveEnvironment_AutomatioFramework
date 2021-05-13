@@ -65,17 +65,25 @@ public class ForgotPageTest extends TestBase{
 		
 	
 	}
-	/*@Test
+	@Test(priority=1)
 	public void validateforgotpageLableTest() throws InterruptedException {
 		test=extent.createTest("TC_01 :VV forgot page Lable Test ");
 		WebElement elel=driver.findElement(By.xpath("//h2[normalize-space()='Forgot password?']"));
 		JavaScriptUtil.drawBorder(elel, driver);
 		boolean flag=forgotpasswordpage.validateforgatepageLable();
 		Assert.assertTrue(flag);
-	}*/
-	@Test
+	}
+	
+	@Test(priority=2)
+	public void forgotPasswordIdEmptyTest() throws InterruptedException {
+		test=extent.createTest("TC_02 :VV forgot Empty data Test ");
+		forgotpasswordpage.setEmptyForgotEmailId();
+		Thread.sleep(3000);
+	}
+	
+	@Test(priority=3)
 	public void forgotPasswordIdTest() throws InterruptedException {
-		
+		test=extent.createTest("TC_03 :VV forgot page Valid EmailId Test ");
 		forgotpasswordpage.setforgotpassword(prop.getProperty("forgotpassId"));
 		Thread.sleep(3000);
 	}

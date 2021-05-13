@@ -30,6 +30,13 @@ public class ForgotpasswordPage extends TestBase{
 		return forgotpagelable.isDisplayed();
 		
 	}
+	public void setEmptyForgotEmailId() throws InterruptedException {
+		clickForgotPasswordBtn.click();
+		clickSendonMail.click();
+		System.out.println("The warning is==>" + driver.findElement(By.xpath("//span[@for='email']")).getText());
+		Thread.sleep(2000);
+		ClickBackToSignIn.click();
+	}
 	
 	public void setforgotpassword(String userEmailId) throws InterruptedException {
 		clickForgotPasswordBtn.click();

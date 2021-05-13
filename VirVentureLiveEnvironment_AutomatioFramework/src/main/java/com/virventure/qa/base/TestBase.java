@@ -17,13 +17,15 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import com.virventure.qa.util.TestUtil;
 import com.virventure.qa.util.WebEventListener;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class TestBase {
 	public static WebDriver driver;
 	public static Properties prop;
 	public static EventFiringWebDriver e_driver;
 	public TestBase() {
 		try {
-			FileInputStream ip= new FileInputStream("D:\\IRFAN---\\java program\\VirVentureLiveEnvironment_AutomatioFramework\\src\\main\\java\\com\\virventure\\qa\\config\\config.properties");
+			FileInputStream ip= new FileInputStream("C:\\Users\\MY-PC.DESKTOP-8EQSD1V\\git\\VirVentureLiveEnvironment_AutomatioFramework\\VirVentureLiveEnvironment_AutomatioFramework\\src\\main\\java\\com\\virventure\\qa\\config\\config.properties");
 			prop= new Properties();
 			prop.load(ip);
 		} catch (Exception e) {
@@ -34,8 +36,8 @@ public class TestBase {
 	public static void initialization() {
 		String browsername=prop.getProperty("browser");
 		if(browsername.equalsIgnoreCase("chrome")) {
-			System.setProperty("webdriver.chrome.driver", "D:\\irfan\\selenium\\Lstest-All-Driver\\chromedriver.exe");
-			
+			//System.setProperty("webdriver.chrome.driver", "D:\\irfan\\selenium\\Lstest-All-Driver\\chromedriver.exe");
+			WebDriverManager.chromedriver().setup();
 			driver= new ChromeDriver();
 		}else if(browsername.equalsIgnoreCase("FireFox")) {
 			System.setProperty("webdriver.gecko.driver", "D:\\IRFAN---\\java program\\VirVentureLiveEnvironment_AutomatioFramework\\Browser-Driver\\geckodriver.exe");
@@ -65,8 +67,8 @@ public class TestBase {
 		TakesScreenshot ts= (TakesScreenshot)driver;
 		File src =ts.getScreenshotAs(OutputType.FILE);
 		try {
-			FileUtils.copyFile(src, new File("D:\\IRFAN---\\java program\\VirVentureLiveEnvironment_AutomatioFramework\\"+
-									"ScreenShot\\"+ testMethodName+"_" + ".png"));
+			FileUtils.copyFile(src, new File("C:\\Users\\MY-PC.DESKTOP-8EQSD1V\\git\\VirVentureLiveEnvironment_AutomatioFramework\\"+ 
+								"VirVentureLiveEnvironment_AutomatioFramework\\ScreenShot\\"+ testMethodName+"_" + ".png"));
 		} catch (IOException e) {
 			System.out.println("Error while taking ScreenShots");
 			e.printStackTrace();

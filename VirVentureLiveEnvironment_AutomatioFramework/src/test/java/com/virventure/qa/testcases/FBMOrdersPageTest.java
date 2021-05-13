@@ -45,8 +45,7 @@ public class FBMOrdersPageTest extends TestBase{
 	public void ExtentReportsetUp() {
 
 		extent= new ExtentReports();
-		spark=new ExtentSparkReporter("D:\\IRFAN---\\java program\\VirVentureLiveEnvironment_AutomatioFramework\\"+
-									  "ExtentReports\\FBMOrdersExtentReport.html");
+		spark=new ExtentSparkReporter("C:\\Users\\MY-PC.DESKTOP-8EQSD1V\\git\\VirVentureLiveEnvironment_AutomatioFramework\\VirVentureLiveEnvironment_AutomatioFramework\\ExtentReports\\FBMOrdersExtentReport.html");
 		spark.config().setTheme(Theme.DARK);
 		spark.config().setDocumentTitle("Automation Test");
 		spark.config().setReportName("Mohammed Irfanullah Ansari");
@@ -184,12 +183,8 @@ public class FBMOrdersPageTest extends TestBase{
 				//driver.findElement(By.xpath("//a[@id='hide_icon']")).click();
 				//driver.findElement(By.xpath("//input[@id='filter_order_id']")).sendKeys("");
 			}
-			
-			
 		}
-		driver.findElement(By.xpath("//a[@id='hide_icon']")).click();
-		driver.findElement(By.xpath("//input[@id='filter_order_id']")).sendKeys("");
-	
+		
 	}
 	
 	@AfterMethod

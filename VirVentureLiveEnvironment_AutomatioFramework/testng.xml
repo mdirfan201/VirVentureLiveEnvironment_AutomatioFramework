@@ -1,14 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-  <test thread-count="5" name="Test">
-    <classes>
-      <class name="com.virventure.qa.testcases.RMASearchPageTest">
-      <methods>
-      <include name="SearchRMAbyFilterTest"></include>
-      </methods>
-      </class>
-      
-    </classes>
-  </test> <!-- Test -->
+	<test thread-count="5" name="Test">
+		<classes>
+		
+			<!-- Class>>> HomePage -->
+			<class name="com.virventure.qa.testcases.HomePageTest">
+				<methods>
+					<exclude name="VVHomepageLableTest"></exclude>
+				</methods>
+			</class>
+			 
+			<!-- Class>>> ForgotPage -->
+			<class name="com.virventure.qa.testcases.ForgotPageTest">
+				<methods>
+					<exclude name="validateforgotpageLableTest"></exclude>
+				</methods>
+			</class>
+			
+			<!-- Class>>> RMASearch Page -->
+			<class name="com.virventure.qa.testcases.RMASearchPageTest">
+				<methods>
+					<exclude name="ValidateRMASearchPageLableTest"></exclude>
+				</methods>
+			</class>
+			
+			<!-- Class>>> LoginPage -->
+			<class name="com.virventure.qa.testcases.LoginPageTest">
+				<methods>
+					<exclude name="VVLogoImageTest"></exclude>
+				</methods>
+			</class>
+			
+			<!-- Class>>> InventoryPage -->
+			<class name="com.virventure.qa.testcases.InventoryPageTest">
+				<methods>
+					<exclude name="validateInventoryManageVendorLableTest"></exclude>
+				</methods>
+			</class>
+			
+			<!-- Class>>> FBMOrdersPage -->
+			<class name="com.virventure.qa.testcases.FBMOrdersPageTest">
+				<methods>
+					<exclude name="FBMOrderPageLAbleTest"></exclude>
+				</methods>
+			</class>
+
+		</classes>
+	</test> <!-- Test -->
 </suite> <!-- Suite -->

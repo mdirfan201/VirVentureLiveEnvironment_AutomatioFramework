@@ -11,6 +11,8 @@ public class JavaScriptUtil {
 		js.executeScript("arguments[0].style.border= '3px solid red'", element);
 		
 	}
+	
+	
 	public static String getTitleByJS(WebDriver driver) {
 		JavascriptExecutor js=(JavascriptExecutor)driver;
 		String title=js.executeScript("return document.title;").toString();

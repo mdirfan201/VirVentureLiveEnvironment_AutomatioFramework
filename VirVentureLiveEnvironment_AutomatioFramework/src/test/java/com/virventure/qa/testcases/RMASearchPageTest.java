@@ -5,6 +5,7 @@ import java.text.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -22,6 +23,7 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.virventure.qa.base.TestBase;
 import com.virventure.qa.pages.LoginPage;
 import com.virventure.qa.pages.RMASearchPage;
+import com.virventure.qa.util.JavaScriptUtil;
 
 
 public class RMASearchPageTest extends TestBase{
@@ -94,14 +96,33 @@ public class RMASearchPageTest extends TestBase{
 	}
 	
 	@Test(priority=4)
+	public void SearchRMAbyFilterEmptyFieldsTest() throws InterruptedException, ParseException {
+		test=extent.createTest("TC_04 :VV Search RMA by Filter Empty data Test");
+		RMAsearchpage.ClickRMABtn();
+		RMAsearchpage.ClickRMASearchBtn();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//input[@id='btn_search']")).click();
+		System.out.println(driver.switchTo().alert().getText());
+		test.info("The alert msg is====>"+ driver.switchTo().alert().getText());
+		
+		
+		Thread.sleep(2000);
+		driver.switchTo().alert().accept();
+		
+	}
+	
+	
+	@Test(priority=5)
 	public void SearchRMAbyFilterTest() throws InterruptedException, ParseException {
-		test=extent.createTest("TC_04 :VV Search RMA by Filter Test");
+		test=extent.createTest("TC_05 :VV Search RMA by Filter Test");
 		RMAsearchpage.RMASearchFilterPage("112-9581391-7525837", "SCSP-1289301", "SCSP-12253", "");
 		
 	}
-	@Test(priority=5)
+	
+	
+	@Test(priority=6)
 	public void EditRMASearchPageTest() throws InterruptedException {
-		test=extent.createTest("TC_05 :VV Edit RMASearch Page Test");
+		test=extent.createTest("TC_06 :VV Edit RMASearch Page Test");
 		RMAsearchpage.EditRMASearch();
 	}
 	
