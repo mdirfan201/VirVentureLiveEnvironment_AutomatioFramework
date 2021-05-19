@@ -20,6 +20,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -29,15 +30,19 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.virventure.qa.base.TestBase;
+import com.virventure.qa.pages.FBMOrdersPage;
 import com.virventure.qa.pages.LoginPage;
 import com.virventure.qa.util.JavaScriptUtil;
+import com.virventure.qa.util.TestUtil;
 
 	
 public class FBMOrdersPageTest extends TestBase{
 	static LoginPage loginpage;
+	static FBMOrdersPage fbmorderpage;
 	static ExtentReports extent;
 	static ExtentSparkReporter spark;
 	static ExtentTest test;
+	String SheetName="FBMOrder";
 	public FBMOrdersPageTest() {
 		super();
 	}
@@ -69,6 +74,7 @@ public class FBMOrdersPageTest extends TestBase{
 		initialization();
 		loginpage = new LoginPage();
 		loginpage.login(prop.getProperty("username"), prop.getProperty("password"));
+		fbmorderpage= new FBMOrdersPage();
 	}
 	
 	@Test(priority=1)
@@ -109,11 +115,22 @@ public class FBMOrdersPageTest extends TestBase{
 		Thread.sleep(5000);
 		//driver.close();
 	}
+	@DataProvider
+	public Object[][] getFBMData() {
+		Object data[][]=TestUtil.getTestData(SheetName);
+		return data;
+	}
+	@Test(priority=4, dataProvider="getFBMData")
+	public void FBMOrderPageFilterByVenueTest(String Venue,String OrderStatus,String OrderID) throws InterruptedException {
+		test=extent.createTest("TC_04 :VV LFBM Order Page Filter By Venue Test ");
+		fbmorderpage.FBMFilterValidatebyVenue(Venue,OrderStatus,OrderID);
+		
+	}
 	
-	@Test(priority=4)
+	@Test(priority=5)
 	public void FBMOrderPageEditTest() throws InterruptedException {
 		boolean isSelected=false;
-		test=extent.createTest("TC_04 :VV LFBM Order Page List Test ");
+		test=extent.createTest("TC_05 :VV LFBM Order Page List Test ");
 		driver.findElement(By.xpath("//span[normalize-space()='Orders']")).click();
 		Thread.sleep(3000);
 		driver.findElement(By.xpath("//ul[@class='dropdown-menu' ]//li//a[text()='FBM Orders']")).click();
@@ -203,10 +220,18 @@ public class FBMOrdersPageTest extends TestBase{
 			//String screenshotPath=LoginPageTest.getBase64ScreenShots();
 			test.log(Status.PASS, MediaEntityBuilder.createScreenCaptureFromBase64String(getBase64ScreenShots()).build());
 		}
-		driver.close();
+		//driver.close();
 	}
 	
 	public static String getBase64ScreenShots() {
 		return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BASE64);
 	}
+	
+	/*@Test(priority=5, dataProvider="getFBMData")
+	//@Test
+	public void FBMOrderPageFilterByOrderStatusTest(String OrderStatus1,String OrderStatus2,String OrderStatus3,String OrderStatus4) throws InterruptedException {
+		test=extent.createTest("TC_04 :VV LFBM Order Page Filter By Venue Test ");
+		fbmorderpage.FBMFilterValidatebyOrderStatus(OrderStatus1,OrderStatus2,OrderStatus3,OrderStatus4);
+		
+	}*/
 }

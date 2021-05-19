@@ -38,9 +38,7 @@ public class TestUtil extends TestBase{
 				data[i][k]=sheet.getRow(i+1).getCell(k).toString();
 			}
 		}
-		return data;
-		
-		
+		return data;	
 	}
 	
 	

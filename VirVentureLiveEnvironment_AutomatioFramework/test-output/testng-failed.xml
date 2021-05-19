@@ -3,15 +3,15 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.virventure.qa.testcases.RMASearchPageTest">
+      <class name="com.virventure.qa.testcases.FBMOrdersPageTest">
         <methods>
-          <include name="setupExtentReport"/>
-          <include name="setup"/>
-          <include name="tearDown"/>
-          <include name="SearchRMAFilterPONumberTest"/>
+          <include name="FBMOrderPageFilterByVenueTest" invocation-numbers="0"/>
           <include name="tearExtentReport"/>
+          <include name="tearDown"/>
+          <include name="setup"/>
+          <include name="ExtentReportsetUp"/>
         </methods>
-      </class> <!-- com.virventure.qa.testcases.RMASearchPageTest -->
+      </class> <!-- com.virventure.qa.testcases.FBMOrdersPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
