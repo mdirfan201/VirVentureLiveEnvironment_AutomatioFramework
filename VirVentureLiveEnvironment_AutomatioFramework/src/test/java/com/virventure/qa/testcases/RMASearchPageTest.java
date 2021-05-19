@@ -3,6 +3,7 @@ package com.virventure.qa.testcases;
 import java.text.ParseException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
@@ -12,6 +13,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -24,6 +26,7 @@ import com.virventure.qa.base.TestBase;
 import com.virventure.qa.pages.LoginPage;
 import com.virventure.qa.pages.RMASearchPage;
 import com.virventure.qa.util.JavaScriptUtil;
+import com.virventure.qa.util.TestUtil;
 
 
 public class RMASearchPageTest extends TestBase{
@@ -33,7 +36,7 @@ public class RMASearchPageTest extends TestBase{
 	static ExtentReports extent;
 	static ExtentSparkReporter spark;
 	static ExtentTest test;
-
+	String SheetName="RMASearch";
 	public RMASearchPageTest() {
 		super();
 	}
@@ -42,8 +45,7 @@ public class RMASearchPageTest extends TestBase{
 	public void setupExtentReport() {
 
 		extent= new ExtentReports();
-		spark=new ExtentSparkReporter("D:\\IRFAN---\\java program\\VirVentureLiveEnvironment_AutomatioFramework"+
-								"\\ExtentReports\\RMASearchExtentReport.html");
+		spark=new ExtentSparkReporter("C:\\Users\\MY-PC.DESKTOP-8EQSD1V\\git\\VirVentureLiveEnvironment_AutomatioFramework\\VirVentureLiveEnvironment_AutomatioFramework\\ExtentReports\\RMASearchExtentReport.html");
 		spark.config().setTheme(Theme.DARK);
 		spark.config().setDocumentTitle("Automation Test");
 		spark.config().setReportName("Mohammed Irfanullah Ansari");
@@ -113,16 +115,34 @@ public class RMASearchPageTest extends TestBase{
 	
 	
 	@Test(priority=5)
-	public void SearchRMAbyFilterTest() throws InterruptedException, ParseException {
+	public void SearchRMAbyFilterDateTest() throws InterruptedException, ParseException {
 		test=extent.createTest("TC_05 :VV Search RMA by Filter Test");
-		RMAsearchpage.RMASearchFilterPage("112-9581391-7525837", "SCSP-1289301", "SCSP-12253", "");
+		RMAsearchpage.RMASearchFilterByDate("112-9581391-7525837", "SCSP-1289301", "SCSP-12253", "");
 		
 	}
 	
+	@DataProvider
+	public Object[][] getRMASearchData() {
+		Object data[][]=TestUtil.getTestData(SheetName);
+		return data;
+	}
+	@Test(priority=6, dataProvider="getRMASearchData")
+	public void SearchRMAbyFilterDataTest(String OrderId,String SKU,String RMAReason,String RMAType)throws InterruptedException {
+		test=extent.createTest("TC_07 :VV Search RMA by Filter Data Test");
+		RMAsearchpage.RMASearchFilterdata(OrderId, SKU, RMAReason, RMAType);
+		
+	}
 	
-	@Test(priority=6)
+	@Test(priority=7)
+	public void SearchRMAFilterPONumberTest()throws InterruptedException {
+		test=extent.createTest("TC_07 :VV Search RMA by Filter PONumber Test");
+		SearchRMAbyFilterPONumber();
+		
+	}
+	
+	@Test(priority=8)
 	public void EditRMASearchPageTest() throws InterruptedException {
-		test=extent.createTest("TC_06 :VV Edit RMASearch Page Test");
+		test=extent.createTest("TC_08 :VV Edit RMASearch Page Test");
 		RMAsearchpage.EditRMASearch();
 	}
 	
@@ -142,10 +162,45 @@ public class RMASearchPageTest extends TestBase{
 			String ScreenshotPath=RMASearchPageTest.getBase64ScreenShots();
 			test.log(Status.SKIP, MediaEntityBuilder.createScreenCaptureFromBase64String(ScreenshotPath).build());
 		} 
-		driver.close();
+	//	driver.close();
 	}
 	
 	public static String getBase64ScreenShots() {
 		return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BASE64);
+	}
+	
+	public static void SearchRMAbyFilterPONumber() throws InterruptedException {
+		RMAsearchpage.clickRMA.click();
+		RMAsearchpage.clickRMASearch.click();
+		//1. YNPO-4 2.SCSP-12253 3. MAHA-1350
+		RMAsearchpage.txtPONumber.sendKeys("YNPO-4");
+		
+		RMAsearchpage.FilterBtn.click();
+		Thread.sleep(2000);
+		test.info("SS of #PO-NUMBER", MediaEntityBuilder.createScreenCaptureFromBase64String(getBase64ScreenShots()).build());
+		scrollupto();
+		//RMAsearchpage.ClearBtn.clear();
+		
+		Thread.sleep(2000);
+		driver.navigate().refresh();
+		RMAsearchpage.txtPONumber.sendKeys("SCSP-12253");
+		RMAsearchpage.FilterBtn.click();
+		Thread.sleep(2000);
+		test.info("SS of #PO-NUMBER", MediaEntityBuilder.createScreenCaptureFromBase64String(getBase64ScreenShots()).build());
+		scrollupto();
+		
+		Thread.sleep(2000);
+		driver.navigate().refresh();
+		RMAsearchpage.txtPONumber.sendKeys("MAHA-1350");
+		RMAsearchpage.FilterBtn.click();
+		Thread.sleep(2000);
+		scrollupto();
+		//test.info("SS of #PO-NUMBER", MediaEntityBuilder.createScreenCaptureFromBase64String(getBase64ScreenShots()).build());
+	
+	}
+	public static void scrollupto() {
+		WebElement element= driver.findElement(By.xpath("//th[contains(text(),'ORDER DATE')]"));
+		JavascriptExecutor js=(JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView()",element);
 	}
 }

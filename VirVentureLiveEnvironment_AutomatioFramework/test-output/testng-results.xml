@@ -1,97 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
+<testng-results skipped="0" failed="0" ignored="7" total="8" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="227643" started-at="2021-05-11T08:17:56Z" finished-at="2021-05-11T08:21:44Z">
+  <suite name="Default suite" duration-ms="20010" started-at="2021-05-19T06:53:41Z" finished-at="2021-05-19T06:54:01Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="227643" started-at="2021-05-11T08:17:56Z" finished-at="2021-05-11T08:21:44Z">
-      <class name="com.virventure.qa.testcases.FBMOrdersPageTest">
-        <test-method status="PASS" signature="ExtentReportsetUp()[pri:0, instance:com.virventure.qa.testcases.FBMOrdersPageTest@327b636c]" name="ExtentReportsetUp" is-config="true" duration-ms="260" started-at="2021-05-11T08:17:56Z" finished-at="2021-05-11T08:17:56Z">
+    <test name="Default test" duration-ms="20010" started-at="2021-05-19T06:53:41Z" finished-at="2021-05-19T06:54:01Z">
+      <class name="com.virventure.qa.testcases.RMASearchPageTest">
+        <test-method status="PASS" signature="setupExtentReport()[pri:0, instance:com.virventure.qa.testcases.RMASearchPageTest@1a0dcaa]" name="setupExtentReport" is-config="true" duration-ms="260" started-at="2021-05-19T06:53:40Z" finished-at="2021-05-19T06:53:41Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- ExtentReportsetUp -->
-        <test-method status="PASS" signature="setup()[pri:0, instance:com.virventure.qa.testcases.FBMOrdersPageTest@327b636c]" name="setup" is-config="true" duration-ms="7141" started-at="2021-05-11T08:17:56Z" finished-at="2021-05-11T08:18:03Z">
+        </test-method> <!-- setupExtentReport -->
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.virventure.qa.testcases.RMASearchPageTest@1a0dcaa]" name="setup" is-config="true" duration-ms="7467" started-at="2021-05-19T06:53:41Z" finished-at="2021-05-19T06:53:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="FBMOrderPageTitleTest()[pri:1, instance:com.virventure.qa.testcases.FBMOrdersPageTest@327b636c]" name="FBMOrderPageTitleTest" duration-ms="34195" started-at="2021-05-11T08:18:03Z" finished-at="2021-05-11T08:18:38Z">
+        <test-method status="PASS" signature="SearchRMAFilterPONumberTest()[pri:7, instance:com.virventure.qa.testcases.RMASearchPageTest@1a0dcaa]" name="SearchRMAFilterPONumberTest" duration-ms="12384" started-at="2021-05-19T06:53:48Z" finished-at="2021-05-19T06:54:00Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- FBMOrderPageTitleTest -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.virventure.qa.testcases.FBMOrdersPageTest@327b636c]" name="tearDown" is-config="true" duration-ms="4454" started-at="2021-05-11T08:18:38Z" finished-at="2021-05-11T08:18:42Z">
+        </test-method> <!-- SearchRMAFilterPONumberTest -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.virventure.qa.testcases.RMASearchPageTest@1a0dcaa]" name="tearDown" is-config="true" duration-ms="142" started-at="2021-05-19T06:54:01Z" finished-at="2021-05-19T06:54:01Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=FBMOrderPageTitleTest status=SUCCESS method=FBMOrdersPageTest.FBMOrderPageTitleTest()[pri:1, instance:com.virventure.qa.testcases.FBMOrdersPageTest@327b636c] output={null}]]]>
+                <![CDATA[[TestResult name=SearchRMAFilterPONumberTest status=SUCCESS method=RMASearchPageTest.SearchRMAFilterPONumberTest()[pri:7, instance:com.virventure.qa.testcases.RMASearchPageTest@1a0dcaa] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setup()[pri:0, instance:com.virventure.qa.testcases.FBMOrdersPageTest@327b636c]" name="setup" is-config="true" duration-ms="6974" started-at="2021-05-11T08:18:42Z" finished-at="2021-05-11T08:18:49Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="FBMOrderPageLAbleTest()[pri:2, instance:com.virventure.qa.testcases.FBMOrdersPageTest@327b636c]" name="FBMOrderPageLAbleTest" duration-ms="29424" started-at="2021-05-11T08:18:49Z" finished-at="2021-05-11T08:19:18Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- FBMOrderPageLAbleTest -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.virventure.qa.testcases.FBMOrdersPageTest@327b636c]" name="tearDown" is-config="true" duration-ms="4325" started-at="2021-05-11T08:19:18Z" finished-at="2021-05-11T08:19:23Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=FBMOrderPageLAbleTest status=SUCCESS method=FBMOrdersPageTest.FBMOrderPageLAbleTest()[pri:2, instance:com.virventure.qa.testcases.FBMOrdersPageTest@327b636c] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setup()[pri:0, instance:com.virventure.qa.testcases.FBMOrdersPageTest@327b636c]" name="setup" is-config="true" duration-ms="6486" started-at="2021-05-11T08:19:23Z" finished-at="2021-05-11T08:19:29Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="FBMOrderPageListTest()[pri:3, instance:com.virventure.qa.testcases.FBMOrdersPageTest@327b636c]" name="FBMOrderPageListTest" duration-ms="12769" started-at="2021-05-11T08:19:29Z" finished-at="2021-05-11T08:19:42Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- FBMOrderPageListTest -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.virventure.qa.testcases.FBMOrdersPageTest@327b636c]" name="tearDown" is-config="true" duration-ms="4385" started-at="2021-05-11T08:19:42Z" finished-at="2021-05-11T08:19:46Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=FBMOrderPageListTest status=SUCCESS method=FBMOrdersPageTest.FBMOrderPageListTest()[pri:3, instance:com.virventure.qa.testcases.FBMOrdersPageTest@327b636c] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setup()[pri:0, instance:com.virventure.qa.testcases.FBMOrdersPageTest@327b636c]" name="setup" is-config="true" duration-ms="6877" started-at="2021-05-11T08:19:46Z" finished-at="2021-05-11T08:19:53Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="FBMOrderPageEditTest()[pri:4, instance:com.virventure.qa.testcases.FBMOrdersPageTest@327b636c]" name="FBMOrderPageEditTest" duration-ms="106216" started-at="2021-05-11T08:19:53Z" finished-at="2021-05-11T08:21:40Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- FBMOrderPageEditTest -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.virventure.qa.testcases.FBMOrdersPageTest@327b636c]" name="tearDown" is-config="true" duration-ms="4361" started-at="2021-05-11T08:21:40Z" finished-at="2021-05-11T08:21:44Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=FBMOrderPageEditTest status=SUCCESS method=FBMOrdersPageTest.FBMOrderPageEditTest()[pri:4, instance:com.virventure.qa.testcases.FBMOrdersPageTest@327b636c] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="tearExtentReport()[pri:0, instance:com.virventure.qa.testcases.FBMOrdersPageTest@327b636c]" name="tearExtentReport" is-config="true" duration-ms="339" started-at="2021-05-11T08:21:44Z" finished-at="2021-05-11T08:21:44Z">
+        <test-method status="PASS" signature="tearExtentReport()[pri:0, instance:com.virventure.qa.testcases.RMASearchPageTest@1a0dcaa]" name="tearExtentReport" is-config="true" duration-ms="311" started-at="2021-05-19T06:54:01Z" finished-at="2021-05-19T06:54:01Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearExtentReport -->
-      </class> <!-- com.virventure.qa.testcases.FBMOrdersPageTest -->
+      </class> <!-- com.virventure.qa.testcases.RMASearchPageTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

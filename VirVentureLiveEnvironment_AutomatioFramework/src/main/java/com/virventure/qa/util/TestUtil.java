@@ -14,14 +14,14 @@ public class TestUtil extends TestBase{
 	public static long 	PAGE_LOAD_TIMEOUT=60;
 	public static long 	IMPLICT_WAIT_TIMEOUT=60;
 	
-	static String EXCEL_DATA_PATH="";
+	static String EXCEL_DATA_PATH="C:\\Users\\MY-PC.DESKTOP-8EQSD1V\\git\\VirVentureLiveEnvironment_AutomatioFramework\\VirVentureLiveEnvironment_AutomatioFramework\\src\\main\\java\\com\\virventure\\qa\\testdata\\VVData.xlsx";
 	static Workbook book;
 	static Sheet sheet;
 	
-	public Object[][] getTestData(String sheetName) {
+	public static Object[][] getTestData(String sheetName) {
 		FileInputStream file=null;
 		try {
-			file= new FileInputStream("");
+			file= new FileInputStream(EXCEL_DATA_PATH);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

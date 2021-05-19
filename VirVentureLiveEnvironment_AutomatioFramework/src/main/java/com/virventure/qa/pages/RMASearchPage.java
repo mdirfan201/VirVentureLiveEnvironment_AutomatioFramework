@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
@@ -88,21 +89,24 @@ public class RMASearchPage extends TestBase{
 		Thread.sleep(50000);
 		JavaScriptUtil.WindowScrollBy(driver);
 	}
-	public void RMASearchFilterPage(String OrderId, String sku, String PoNo,String TrackingNo) throws InterruptedException, ParseException {
-	
+	public void RMASearchFilterByDate(String OrderId, String sku, String PoNo,String TrackingNo) throws InterruptedException, ParseException {
+
 		clickRMA.click();
 		clickRMASearch.click();
 		txtFromDate.sendKeys("2021-01-01",Keys.TAB);
-		
+
 		txtToDate.sendKeys("2021-04-30",Keys.TAB);
 		Thread.sleep(2000);
 		txtOrderId.sendKeys(OrderId);
 		txtSKU.sendKeys(sku);
+		//RMA Reason
 		Select sel1= new Select(driver.findElement(By.xpath("//select[@id='filter_rma_type']")));
 		sel1.selectByVisibleText("Damaged - Delivered");
 		Thread.sleep(2000);
+		//RMA Type
 		Select sel2= new Select(driver.findElement(By.xpath("//select[@id='rma_type']")));
 		sel2.selectByVisibleText("Refund");
+		//Case pending from
 		Select sel3= new Select(driver.findElement(By.xpath("//select[@id='pending_from']")));
 		sel3.selectByIndex(1);
 		Thread.sleep(1000);
@@ -112,16 +116,37 @@ public class RMASearchPage extends TestBase{
 		Thread.sleep(1000);
 		FilterBtn.click();
 		Thread.sleep(4000);
-	
+
 		//ClearBtn.click();
 	}
-	
-//	public void RMASearchFilterPageEmpty() {
-//		clickRMA.click();
-//		clickRMASearch.click();
-//		FilterBtn.click();
-//		
-//	}
+	public void RMASearchFilterdata(String OId, String sku, String rmaRea, String rmaTyp) throws InterruptedException {
+		clickRMA.click();
+		clickRMASearch.click();
+		
+		txtOrderId.sendKeys(OId);
+		txtSKU.sendKeys(sku);
+		
+		//RMA Reason
+		//driver.findElement(By.xpath("//select[@id='filter_rma_type']")).click();
+		Select sel1= new Select(driver.findElement(By.xpath("//select[@id='filter_rma_type']")));
+		//sel1.selectByVisibleText(rmaRea);
+		sel1.selectByValue(rmaRea);
+		Thread.sleep(1000);
+		//RMA Type
+		Select sel2= new Select(driver.findElement(By.xpath("//select[@id='rma_type']")));
+		sel2.selectByVisibleText(rmaTyp);
+		FilterBtn.click();
+		Thread.sleep(1000);
+		WebElement element= driver.findElement(By.xpath("//th[contains(text(),'ORDER DATE')]"));
+		JavascriptExecutor js=(JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView()",element);
+	}
+	//	public void RMASearchFilterPageEmpty() {
+	//		clickRMA.click();
+	//		clickRMASearch.click();
+	//		FilterBtn.click();
+	//		
+	//	}
 
 	public void EditRMASearch() throws InterruptedException {
 		boolean isSelected=false;
@@ -132,7 +157,7 @@ public class RMASearchPage extends TestBase{
 		WebDriverWait wait=new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//a[@class='btn' and @title='View']")));
 		JavaScriptUtil.WindowScrollBy(driver);
-		
+
 		String parentWindowID=driver.getWindowHandle(); //return ID of single browser
 		System.out.println("Parent Window ID is====>" + parentWindowID);
 
@@ -146,7 +171,7 @@ public class RMASearchPage extends TestBase{
 			if(!isSelected) {
 				EditLsit.get(i).click();
 				Thread.sleep(2000);
-				
+
 				Set<String>windowsIDs =driver.getWindowHandles();
 				System.out.println("Total number of Id of Multiple Windiows====>" + windowsIDs.size());
 				List<String>windowIDsList= new ArrayList(windowsIDs);
@@ -181,11 +206,11 @@ public class RMASearchPage extends TestBase{
 		System.out.println("Current date is=== "+ monthYearVal); //May 2021
 		String month=monthYearVal.split("")[0].trim();
 		String year=monthYearVal.split("")[1].trim();
-		
+
 		while(!(month.equals("January") && year.equals("2021"))) {
-			
+
 			driver.findElement(By.xpath("//a[@title='Prev']")).click();
-			
+
 			monthYearVal=driver.findElement(By.className("ui-datepicker-title")).getText();
 			System.out.println("Current date is=== "+ monthYearVal); //May 2021
 			month=monthYearVal.split("")[0].trim();
@@ -214,6 +239,6 @@ public class RMASearchPage extends TestBase{
 		FilterBtn.click();
 		Thread.sleep(4000);
 		JavaScriptUtil.WindowScrollBy(driver);
-		 */
-		//ClearBtn.click();
-	
+ */
+//ClearBtn.click();
+

@@ -5,10 +5,10 @@
     <classes>
       <class name="com.virventure.qa.testcases.RMASearchPageTest">
         <methods>
-          <include name="EditRMASearchPageTest"/>
           <include name="setupExtentReport"/>
           <include name="setup"/>
           <include name="tearDown"/>
+          <include name="SearchRMAFilterPONumberTest"/>
           <include name="tearExtentReport"/>
         </methods>
       </class> <!-- com.virventure.qa.testcases.RMASearchPageTest -->
