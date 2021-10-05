@@ -161,7 +161,6 @@ public class FBMOrdersPageTest extends TestBase{
 				driver.switchTo().window(ListchildID);
 				System.out.println("Child window title is ===>" + driver.getTitle());
 				driver.manage().window().maximize();
-				System.out.println("child Window title is==>"+driver.getTitle());
 				Thread.sleep(3000);
 				WebElement NoOfOrderList=driver.findElement(By.xpath("//h3[contains(text(), 'Orders List of')]"));
 				JavaScriptUtil.drawBorder(NoOfOrderList, driver);
